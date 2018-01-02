@@ -23,11 +23,8 @@ class Deck:
     def shuffle(self):
         for i in range(1, random.randint(3, 5) + 1):
             random.shuffle(self.cards)
-            
-    def create_pack(self):
-        c =  self.cards
-        return c
-                 
+        c =  self.cards 
+        
 class Player:
     def __init__(self, name):
         self.name = name
@@ -57,6 +54,14 @@ class Player:
                     self.uppoint()
         self.show()
 
+d = Deck()
+d.build()
+d.shuffle()
+p1 = Player("Player1")
+p2 = Player("Player2")
+# pick a card by using p1.pick() for player 1
+# Enjoy The Game
+# An interactive game will be uploaded shortly after 27 March 2018
 
 
 
