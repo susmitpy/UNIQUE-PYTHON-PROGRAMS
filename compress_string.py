@@ -1,20 +1,28 @@
+"""
+This Program Compresses String.
+For Example:
+a -> a
+aaa - > a3
+aabcc -> a2bc2
+"""
+
 def compressString(s):
-    cs = ""
-    count = 0
-    prev = None
-    l = len(s)
+    cs = ""    #Compressed String
+    count = 0  #Count of subsequent Occurence of  Each Char
+    prev = None #Previous Character
+    l = len(s)  #Length of The GIven String
 
     for index, value in enumerate(s):
-        if prev == None:
-            prev = value
-            count = 1
+        if index == 0:    # If the character is the first character in the string
+            prev = value    
+            count = 1   #First Occurence
 
         else:
-            if value == prev:
-                count += 1
+            if value == prev:   #The Current char equals the previous char.
+                count += 1       #Increasing the Count
 
-            else:
-                if count == 1:
+            else:               #The Current char DOES NOT equals the previous char.
+                if count == 1:  # a -> a
                     cs += prev
                     count = 1
                     prev = value
@@ -23,7 +31,7 @@ def compressString(s):
                     cs += prev + str(count)
                     prev = value
                     count = 1
-
+        # For The Last char or Subsequent Occurences of a char.
         if index == l - 1:
             if count == 1:
                     cs += prev
@@ -33,6 +41,6 @@ def compressString(s):
     print(cs)
 
 while True:
-    s = input("Enter The String To Be Compressed: ")
-    compressString(s)
+    s = input("Enter The String To Be Compressed: ")  #Taking input
+    compressString(s)                                  #Calling The Function
         
