@@ -1,20 +1,28 @@
+"""
+This Program Handles String Compression and Decompression.
+For Example:
+a -> a
+aaa - > a3
+aabcc -> a2bc2
+"""
+
 def compressString(s):
-    cs = ""
-    count = 0
-    prev = None
-    l = len(s)
+    cs = ""    #Compressed String
+    count = 0  #Count of subsequent Occurence of  Each Char
+    prev = None #Previous Character
+    l = len(s)  #Length of The GIven String
 
     for index, value in enumerate(s):
-        if index == 0:
-            prev = value
-            count = 1
+        if index == 0:    # If the character is the first character in the string
+            prev = value    
+            count = 1   #First Occurence
 
         else:
-            if value == prev:
-                count += 1
+            if value == prev:   #The Current char equals the previous char.
+                count += 1       #Increasing the Count
 
-            else:
-                if count == 1:
+            else:               #The Current char DOES NOT equals the previous char.
+                if count == 1:  # a -> a
                     cs += prev
                     count = 1
                     prev = value
@@ -23,7 +31,7 @@ def compressString(s):
                     cs += prev + str(count)
                     prev = value
                     count = 1
-
+        # For The Last char or Subsequent Occurences of a char.
         if index == l - 1:
             if count == 1:
                     cs += prev
@@ -35,41 +43,31 @@ def compressString(s):
 
 def deCompressString(comps):
     s = ""
-    temps = ""
     prev = None
     l = len(comps)
     for index, value in enumerate(comps):
-        if not value.isdigit():
-            if prev == None:
+        if not value.isdigit():           # Not a digit
+            if prev == None:              #First char or char after  a digit
                 prev = value
                 
-                if index == l - 1:
-                    s += value
+                if index == l - 1:         #Char at last index
+                    s += value  
             
             elif value != prev:
                  s += prev
                  prev = value
 
-            
-            
-
         elif value.isdigit():
             if index == 0:
-                print("Wrong Input")
+                print("Wrong Input")     #First char cannot be a digit
                 break
             else:
-                s += prev*(int(value))
+                s += prev*(int(value))   #Example: prev = s, value = 2 s += "ss"
                 prev = None
-
-            
-
-        
-            
-
     print(s) 
                 
             
-    
+# Taking Input
 while True:
     common = "To {} String Type {} and Press Enter"
     print(common.format("Compress", "c"))
