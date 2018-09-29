@@ -9,6 +9,7 @@ class BST:
     def __init__ (self):
         self.level = 0
         self.nodes = 0
+        self.levels = []
 
     def Assign(self, value, current_node = None):
 ##        print("Assign is Called")
@@ -219,20 +220,65 @@ class BST:
                     del TR
                     break
 
+
     def Process(self, tbp):
         print(tbp.value)
 
-    def PreOrderTraversal(self):       			# DLR
-        pass
+    def PreOrderTraversal(self, node = None):       			# DLR
+        if not node:
+			node = self.root_node
+        print(node.value)
 
-    def InOrderTraversal(self): #LDR
-        pass
+        if self.HasChild(node,"LC"):
+    	    self.PreOrderTraversal(node.LeftChild)
+
+    	if self.HasChild(node,"RC"):
+            self.PreOrderTraversal(node.RightChild)
+
+    def InOrderTraversal(self, node = None): #LDR
+    	if not node:
+    		node = self.root_node
+
+    	if self.HasChild(node, "LC"):
+    		self.InOrderTraversal(node.LeftChild)
+
+    	print(node.value)
+
+    	if self.HasChild(node, "RC"):
+    		self.InOrderTraversal(node.RightChild)
+
 
     def PostOrderTraversal(self):   #LRD
-        pass
+        if not node:
+    		node = self.root_node
+
+    	if self.HasChild(node, "LC"):
+    		self.PostOrderTraversal(node.LeftChild)
+
+    	if self.HasChild(node, "RC"):
+    		self.PostOrderTraversal(node.RightChild)
+
+    	print(node.value)
+
+    def goLevelWise(self, node):
+    	if self.HasChild(node, "LC"):
+    		if self.HasChild(node, "RC"):
+    			self.levels.append((node.LeftChild.value, node.RightChild.value))
+    		else:
+    			self.levels.append((node.LeftChild.value, ))
+    		self.goLevelWise(node.LeftChild)
+
+    	else:
+    		self.levels.append((,node.RightChild.value))
+    		self.goLevelWise(node.RightChild)
+
     
     def Visualize(self):
-        pass
+    	self.levels.append(self.root_node)
+    	self.goLevelWise(self.root_node)
+    	s = " "
+    	for level in self.levels:
+    		print(level)
 
     def GetLevel(self):
         pass
