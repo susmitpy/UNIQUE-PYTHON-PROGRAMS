@@ -222,7 +222,7 @@ class BST:
     def Process(self, tbp):
         print(tbp.value)
 
-   def PreOrderTraversal(self): #DLR
+    def PreOrderTraversal(self):       			# DLR
         pass
 
     def InOrderTraversal(self): #LDR
