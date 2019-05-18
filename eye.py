@@ -25,6 +25,12 @@ os.system('say "Started"')
 fiveMinuteBreak().start()
 blink10().start()
 
+
+"""
+Instead of os.system('say "text to speak"') , 
+you can use tkinter to show window.
+"""
+
 """
 To launch at startup for OSX
 
