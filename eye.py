@@ -38,6 +38,6 @@ To launch at startup for OSX
 python3 {full path}/timer.py
 
 Place the above text in a file named as eye
-In System Preferences, Users and groupsm=, Login items, add this unix executable.
+In System Preferences, Users and groups, Login items, add this unix executable.
 
 """
