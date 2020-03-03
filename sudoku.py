@@ -1,6 +1,6 @@
 """
 A sudoku Solver.
-Solves sudoku completes toill Medium Difficulty.
+Solves sudoku completes till Medium Difficulty.
 After that human intelligence is needed.
 
 """
