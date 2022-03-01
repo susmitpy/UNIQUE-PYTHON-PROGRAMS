@@ -2,6 +2,7 @@ from time import sleep
 import os
 from threading import Thread
 
+
 class fiveMinuteBreak(Thread):
     def run(self):
         sleep(60*60)
@@ -9,14 +10,22 @@ class fiveMinuteBreak(Thread):
         print("After one hour")
         self.run()
 
+
 class blink10(Thread):
+    counter = 0
+
     def run(self):
         sleep(60*20)
-        os.system('say "Look away and blink"')
-        sleep(20)
-        os.system('say "Close your eyes and take a deep breath"')
-        print("After 20 minutes")
-        self.run()
+        self.counter += 1
+        if self.counter == 3:
+            self.counter = 0
+            self.run()
+        else:
+            os.system('say "Look away and blink"')
+            sleep(20)
+            os.system('say "Close your eyes and take a deep breath"')
+            print("After 20 minutes")
+            self.run()
 
 
 print("Started...")
@@ -28,7 +37,8 @@ blink10().start()
 
 """
 Instead of os.system('say "text to speak"') , 
-you can use tkinter to show window.
+you can use tkinter to show window. (checkout eye_tkinter.py)
+For linux, use spd-say
 """
 
 """
